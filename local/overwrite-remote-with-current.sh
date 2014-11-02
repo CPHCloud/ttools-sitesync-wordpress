@@ -6,10 +6,6 @@
 BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ../.. && pwd )";
 MODULEDIR="$BASEDIR/ttools-wordpress-sync";
 
-
-#making cure that the dump path exists
-mkdir -p $DUMP_PATH;
-
 #hardcoding environment (for now)
 #As a note, it's pretty wise that this is hard coded
 #as we don't want anyone to accidentally do this on the live
