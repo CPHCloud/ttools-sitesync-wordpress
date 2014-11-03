@@ -1,6 +1,8 @@
 #!/bin/bash
-#This script dumps the current site
-#Needs to be supplied with file and environment
+#This script overwrites the current site
+#Only database is overwritten here - asset sync is handled by core
+#Called from sitesync-core
+#Needs to be supplied with database file and environment
 
 FILE=$1
 ENV=$2
