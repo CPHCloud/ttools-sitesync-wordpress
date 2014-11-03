@@ -23,11 +23,11 @@ $ENV_PHPPATH $MODULEDIR/thirdparty/wp-cli.phar db import $DBNAME
 
 echo "Importing files...";
 
-FILES_TO_IMPORT=$FILESDIR/public/content/uploads;
+FILES_TO_IMPORT=$FILESDIR/public/content/uploads/;
 
 
 
-rsync -avz --delete $FILES_TO_IMPORT $WP_PATH/content/uploads/;
+rsync -avz --delete $FILES_TO_IMPORT $WP_PATH/content/uploads;
 
 
 
