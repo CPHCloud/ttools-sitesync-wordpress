@@ -4,7 +4,7 @@
 #But can be modified to also work for pulling Live to Test/Dev (e.g. as a nightly task)
 
 BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ../.. && pwd )";
-MODULEDIR="$BASEDIR/ttools-wordpress-sync";
+MODULEDIR="$BASEDIR/ttools-sitesync-wordpress";
 
 
 #hardcoding environment (for now)
@@ -17,23 +17,23 @@ echo "Now Overwriting Current Site with Database & Assets from $ENV environment.
 
 echo "Sniffing local path on $ENV...";
 
-SERVER_COMMANDS="$ENV_PHPPATH $ENV_REPODIR/ttools-wordpress-sync/lib/php/echo-base_url.php";
+SERVER_COMMANDS="$ENV_PHPPATH $ENV_REPODIR/ttools-sitesync-wordpress/lib/php/echo-base_url.php";
 SEARCH="$(ssh $ENV_CUSTOM_SSHCONNECTIONSTR -t $SERVER_COMMANDS)";
 #echo search is $SEARCH;
 
 
 
 echo "Dumping site on $ENV...";
-SERVER_COMMANDS="$ENV_REPODIR/ttools-serversync/lib/dump-current-site.sh dump $ENV;";
+SERVER_COMMANDS="$ENV_REPODIR/ttools-sitesync-core/lib/dump-current-site.sh dump $ENV;";
 ssh $ENV_CUSTOM_SSHCONNECTIONSTR -t $SERVER_COMMANDS;
 
 
 echo "Downloading dump...";
-$BASEDIR/ttools-serversync/lib/sync-dump-from-env.sh $ENV;
+$BASEDIR/ttools-sitesync-core/lib/sync-dump-from-env.sh $ENV;
 
 
 echo "Overwriting current site...";
-$BASEDIR/ttools-serversync/lib/overwrite-current-site.sh;
+$BASEDIR/ttools-sitesync-core/lib/overwrite-current-site.sh;
 
 
 echo "Replacing base url...";

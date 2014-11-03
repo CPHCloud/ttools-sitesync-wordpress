@@ -14,7 +14,7 @@ fi
 
 
 BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ../.. && pwd )";
-MODULEDIR="$BASEDIR/ttools-wordpress-sync";
+MODULEDIR="$BASEDIR/ttools-sitesync-wordpress";
 WPPATH="$BASEDIR/public/";
 
 

@@ -1,10 +1,8 @@
-# Wordpress Sync Module for Terminal Tools
+# Wordpress Site Sync Module for Terminal Tools
 
-This module can help working locally with Wordpress, as it can:
-
-* Push your local database and assets to a test server (Live is not allowed)
-* Pull changes from a live/test/dev server down on you local machine
-* Does all this via the command line, leveraging `Terminal Tools` and Wordpress CLI tools
+Command line scripts for syncing Wordpress site assets and databases between 
+local development environments to/from (or between) test/stage/live 
+environments with [Terminal Tools](https://github.com/titledk/ttools-core)
 
 
 ## Requirements
