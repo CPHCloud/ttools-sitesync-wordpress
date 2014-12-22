@@ -32,4 +32,4 @@ echo "Dumping files...";
 FILESDIR="$FILESDIR/public/content";
 mkdir -p $FILESDIR;
 
-rsync -avz --delete $FILES_PATHS $FILESDIR;
+rsync -az --delete $FILES_PATHS $FILESDIR;
