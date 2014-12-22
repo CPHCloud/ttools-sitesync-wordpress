@@ -32,4 +32,11 @@ echo "Dumping files...";
 FILESDIR="$FILESDIR/public/content";
 mkdir -p $FILESDIR;
 
-rsync -az --delete --info=progress2 $FILES_PATHS $FILESDIR;
+
+#note that --info=progress2 only works out-of-the-box on linux, not os OSX:
+#http://serverfault.com/questions/219013/showing-total-progress-in-rsync-is-it-possible
+#also see comment here:
+#http://www.cyberciti.biz/faq/show-progress-during-file-transfer/
+
+rsync -azP --delete $FILES_PATHS $FILESDIR;
+#rsync -az --delete --info=progress2 $FILES_PATHS $FILESDIR;
