@@ -38,5 +38,20 @@ mkdir -p $FILESDIR;
 #also see comment here:
 #http://www.cyberciti.biz/faq/show-progress-during-file-transfer/
 
-rsync -azP --delete $FILES_PATHS $FILESDIR;
+
+#spinner, from here:
+#http://unix.stackexchange.com/questions/92920/use-the-command-bar-in-bash-without-i-o
+#sp='/-\|'
+str='.'
+printf ' '
+for i in $(seq 3); do
+  printf "$str"
+  #printf '\b%.1s' "$sp"
+  #sp=${sp#?}${sp%???}
+  str="$str."
+  sleep 1
+done
+echo ''
+
+rsync -az --delete $FILES_PATHS $FILESDIR;
 #rsync -az --delete --info=progress2 $FILES_PATHS $FILESDIR;
