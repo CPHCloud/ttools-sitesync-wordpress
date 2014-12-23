@@ -14,6 +14,8 @@ WP_PATH="$BASEDIR/public";
 FILES_PATHS="$WP_PATH/content/uploads"; #this can be one or more paths, separated with spaces
 
 
+source $BASEDIR/ttools-core/lib/inc.sh;
+
 ENVVARS="$BASEDIR/ttools-core/lib/vars-for-env.sh $ENV"
 eval `$ENVVARS`
 
@@ -39,19 +41,22 @@ mkdir -p $FILESDIR;
 #http://www.cyberciti.biz/faq/show-progress-during-file-transfer/
 
 
-#spinner, from here:
-#http://unix.stackexchange.com/questions/92920/use-the-command-bar-in-bash-without-i-o
-#sp='/-\|'
-str='.'
-printf ' '
-for i in $(seq 3); do
-  printf "$str"
-  #printf '\b%.1s' "$sp"
-  #sp=${sp#?}${sp%???}
-  str="$str."
-  sleep 1
-done
-echo ''
+rsyncV=$(rsync --version | egrep -o "([0-9]{1,}\.)+[0-9]{1,}");
 
-rsync -az --delete $FILES_PATHS $FILESDIR;
-#rsync -az --delete --info=progress2 $FILES_PATHS $FILESDIR;
+
+echo "rsync version: $rsyncV";
+
+vercomp "$rsyncV" "3.0.9"
+output=$?;
+if [[ $output = 1 ]] 
+then
+	echo "rsync version is 3.1.0 or larger - using progress2"
+	rsync -az --delete --info=progress2 $FILES_PATHS $FILESDIR;
+else
+	echo "rsync version is smaller than 3.1.0 - using verbose mode"
+	rsync -avz --delete $FILES_PATHS $FILESDIR;
+fi
+
+
+
+
