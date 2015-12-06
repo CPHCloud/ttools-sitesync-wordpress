@@ -5,7 +5,7 @@
 #make your site run on a new domain
 
 
-BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ../.. && pwd )";
+BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ../../.. && pwd )";
 MODULEDIR="$BASEDIR/ttools/sitesync-wordpress";
 
 

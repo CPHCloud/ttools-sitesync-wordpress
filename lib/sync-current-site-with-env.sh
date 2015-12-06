@@ -24,7 +24,7 @@ if [[ "$ENV" == "Live" ]] && [[ "$SYNCDIRECTION" == "to" ]]; then
 fi
 
 
-BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ../.. && pwd )";
+BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ../../.. && pwd )";
 MODULEDIR="$BASEDIR/ttools/sitesync-wordpress";
 
 ENVVARS="$BASEDIR/ttools/core/lib/vars-for-env.sh $ENV"

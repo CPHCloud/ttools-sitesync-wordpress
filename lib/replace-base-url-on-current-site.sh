@@ -13,7 +13,7 @@ if [ -z "${1}" ]; then
 fi
 
 
-BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ../.. && pwd )";
+BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ../../.. && pwd )";
 MODULEDIR="$BASEDIR/ttools/sitesync-wordpress";
 WPPATH="$BASEDIR/public/";
 

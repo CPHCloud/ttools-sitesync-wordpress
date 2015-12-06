@@ -5,7 +5,7 @@ error_reporting(-1);
 
 
 
-$basedir = dirname(dirname(dirname(dirname(__FILE__))));
+$basedir = dirname(dirname(dirname(dirname(dirname(__FILE__)))));
 
 #return;
 include "$basedir/public/wp-config.php";

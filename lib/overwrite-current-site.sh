@@ -8,7 +8,7 @@ FILESDIR=$2
 ENV=$3
 
 
-BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ../.. && pwd )";
+BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ../../.. && pwd )";
 MODULEDIR="$BASEDIR/ttools/sitesync-wordpress";
 WP_PATH="$BASEDIR/public";
 

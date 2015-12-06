@@ -2,7 +2,7 @@
 
 include "sniff-environment.php";
 
-$basedir = dirname(dirname(dirname(dirname(__FILE__))));
+$basedir = dirname(dirname(dirname(dirname(dirname(__FILE__)))));
 
 //echo $basedir;
 
