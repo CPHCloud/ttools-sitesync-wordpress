@@ -6,7 +6,7 @@
 
 
 BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ../.. && pwd )";
-MODULEDIR="$BASEDIR/ttools-sitesync-wordpress";
+MODULEDIR="$BASEDIR/ttools/sitesync-wordpress";
 
 
 echo "CAUTION: You're about to replace the base url on your current site with the new one set in your configuration";

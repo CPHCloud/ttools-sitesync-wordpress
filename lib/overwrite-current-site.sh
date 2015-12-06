@@ -9,10 +9,10 @@ ENV=$3
 
 
 BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ../.. && pwd )";
-MODULEDIR="$BASEDIR/ttools-sitesync-wordpress";
+MODULEDIR="$BASEDIR/ttools/sitesync-wordpress";
 WP_PATH="$BASEDIR/public";
 
-ENVVARS="$BASEDIR/ttools-core/lib/vars-for-env.sh $ENV"
+ENVVARS="$BASEDIR/ttools/core/lib/vars-for-env.sh $ENV"
 eval `$ENVVARS`
 
 cd $WP_PATH;

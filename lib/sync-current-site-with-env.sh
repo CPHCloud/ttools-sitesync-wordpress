@@ -25,9 +25,9 @@ fi
 
 
 BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ../.. && pwd )";
-MODULEDIR="$BASEDIR/ttools-sitesync-wordpress";
+MODULEDIR="$BASEDIR/ttools/sitesync-wordpress";
 
-ENVVARS="$BASEDIR/ttools-core/lib/vars-for-env.sh $ENV"
+ENVVARS="$BASEDIR/ttools/core/lib/vars-for-env.sh $ENV"
 eval `$ENVVARS`
 
 
@@ -39,21 +39,21 @@ if [[ "$SYNCDIRECTION" == "to" ]]; then
 	echo "Now Pushing Your Database & Assets to your $ENV environment...";
 	
 	echo "Dumping site...";
-	$BASEDIR/ttools-sitesync-core/lib/dump-current-site.sh dump;
+	$BASEDIR/ttools/sitesync-core/lib/dump-current-site.sh dump;
 	
 	
 	echo "Now syncing files up to the $ENV environment...";
-	$BASEDIR/ttools-sitesync-core/lib/sync-dump-to-env.sh $ENV;
+	$BASEDIR/ttools/sitesync-core/lib/sync-dump-to-env.sh $ENV;
 	
 	
 	echo "Connecting with $ENV for import";
 	#On the server we'll be doing the following
 	
 	#1. Loading db and files from the dump we just uploaded into the site
-	SERVER_OVERWRITE_CMD="$ENV_REPODIR/ttools-sitesync-core/lib/overwrite-current-site.sh $ENV";
+	SERVER_OVERWRITE_CMD="$ENV_REPODIR/ttools/sitesync-core/lib/overwrite-current-site.sh $ENV";
 	#2. Replace the base url in the uploaded database with the one that's set on the server
 	LOCAL_BASE_URL="$(php $MODULEDIR/lib/php/echo-base_url.php)"
-	SERVER_REPLACE_CMD="$ENV_REPODIR/ttools-sitesync-wordpress/lib/replace-base-url-on-current-site.sh $LOCAL_BASE_URL $ENV";
+	SERVER_REPLACE_CMD="$ENV_REPODIR/ttools/sitesync-wordpress/lib/replace-base-url-on-current-site.sh $LOCAL_BASE_URL $ENV";
 	
 	SERVER_COMMANDS="$SERVER_OVERWRITE_CMD;$SERVER_REPLACE_CMD;";
 	
@@ -75,22 +75,22 @@ if [[ "$SYNCDIRECTION" == "from" ]]; then
 
 	echo "Sniffing local path on $ENV...";
 	
-	SERVER_COMMANDS="$ENV_PHPPATH $ENV_REPODIR/ttools-sitesync-wordpress/lib/php/echo-base_url.php";
+	SERVER_COMMANDS="$ENV_PHPPATH $ENV_REPODIR/ttools/sitesync-wordpress/lib/php/echo-base_url.php";
 	SEARCH="$(ssh $ENV_CUSTOM_SSHCONNECTIONSTR -t $SERVER_COMMANDS)";
 	#echo search is $SEARCH;
 
 	
 	echo "Dumping site on $ENV...";
-	SERVER_COMMANDS="$ENV_REPODIR/ttools-sitesync-core/lib/dump-current-site.sh dump $ENV;";
+	SERVER_COMMANDS="$ENV_REPODIR/ttools/sitesync-core/lib/dump-current-site.sh dump $ENV;";
 	ssh $ENV_CUSTOM_SSHCONNECTIONSTR -t $SERVER_COMMANDS;
 	
 	
 	echo "Downloading dump...";
-	$BASEDIR/ttools-sitesync-core/lib/sync-dump-from-env.sh $ENV;
+	$BASEDIR/ttools/sitesync-core/lib/sync-dump-from-env.sh $ENV;
 	
 	
 	echo "Overwriting current site...";
-	$BASEDIR/ttools-sitesync-core/lib/overwrite-current-site.sh;
+	$BASEDIR/ttools/sitesync-core/lib/overwrite-current-site.sh;
 	
 	
 	echo "Replacing base url...";

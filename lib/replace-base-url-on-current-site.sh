@@ -14,7 +14,7 @@ fi
 
 
 BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ../.. && pwd )";
-MODULEDIR="$BASEDIR/ttools-sitesync-wordpress";
+MODULEDIR="$BASEDIR/ttools/sitesync-wordpress";
 WPPATH="$BASEDIR/public/";
 
 
@@ -23,7 +23,7 @@ ENV=LOCAL;
 if [ "${2}" ]; then
 	ENV=$2;
 fi
-ENVVARS="$BASEDIR/ttools-core/lib/vars-for-env.sh $ENV"
+ENVVARS="$BASEDIR/ttools/core/lib/vars-for-env.sh $ENV"
 eval `$ENVVARS`
 
 
