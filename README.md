@@ -55,3 +55,18 @@ the repository to make deployments as little painful as possible.
 	cd thirdparty
 	curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 
+
+## Receipes
+
+As Wordpress is hard coding lots of stuff, you can also use this module to help you fix stuff manually:
+
+### Replace url
+
+```
+ttools/sitesync-wordpress/lib/replace-base-url-on-current-site.sh URL_TO_REPLACE_INCL_HTTP
+```
+
+
+
+
+
