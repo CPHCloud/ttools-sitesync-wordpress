@@ -67,6 +67,14 @@ ttools/sitesync-wordpress/lib/replace-base-url-on-current-site.sh URL_TO_REPLACE
 ```
 
 
+## Debugging
 
+### wp-cli goes crazy because of php notices
+
+Check you error reporting settings in `php.ini`:
+
+`php -i | grep "errors\|ini"`
+
+then uncomment it, or add the following to `env-config.php`, if you're using such: `error_reporting(0);`
 
 
